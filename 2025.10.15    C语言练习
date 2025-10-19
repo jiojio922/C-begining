@@ -186,3 +186,76 @@ int main() {
 	printf("数组的最大值：%d\n数组的最小值：%d\n", max, min);
 
 
+
+
+
+//生成一个1-100之间的随机数
+#include<stdio.h>
+int main(){
+	int num = rand() % 100 + 1;
+	printf("这次生成了一个1-100的随机数：%d", num);
+	return 0;
+}
+
+
+
+
+//给一个数开平方（利用sqrt（））
+#include <stdio.h>
+#include <math.h>  // 别忘了这个,引入新的头文件
+
+int main() {
+    double num = 25.0;  // 要开平方的数
+    double result = sqrt(num);  // 算平方根
+
+    printf("%lf的平方根是%lf\n", num, result);  // 输出：25.000000的平方根是5.000000
+    return 0;
+}
+
+
+
+
+//fabs() 函数就像一个 “去符号神器”，专门用来求浮点数的绝对值—— 不管这个数是正数、负数，它都能把前面的 “-” 去掉，只留下数值大小。
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    double yesterday = -2.5;  // 昨天温度
+    double today = 3.0;       // 今天温度
+    double diff = fabs(today - yesterday);  // 温差（用绝对值确保结果为正）
+
+    printf("两天的温差是：%lf℃\n", diff);  // 计算：3.0 - (-2.5) = 5.5，绝对值还是5.5 → 输出5.500000℃
+    return 0;
+}
+
+注意！！！！！！
+fabs() 处理浮点数（带小数点的数，比如 3.14、-5.2）；
+abs() 处理整数（不带小数点的数，比如 5、-3），它在 <stdlib.h> 头文件里。
+
+
+
+
+//pow( )库函数的使用
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    double result1 = pow(2, 5);  // 2^5
+    double result2 = pow(3, 2);  // 3^2（平方）
+    
+    printf("2的5次方 = %.0lf\n", result1);  // 输出：32（%.0lf表示不显示小数）
+    printf("3的平方 = %.0lf\n", result2);    // 输出：9
+    return 0;
+}
+
+
+
+// auto变量
+实际上局部变量都是auto变量
+//register变量
+将变量放在了寄存器上，使其访问的速度更快
+
+
+
+                                                                                                       
+
