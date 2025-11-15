@@ -464,5 +464,18 @@ int main(){
 			printf("%d %d %d\n",s,s*2,s*3);
 	}
 	return 0;
+}
 
+
+
+//这个例子可以更好理解浮点数的精度问题 
+#include<stdio.h>
+int main(){
+	double i;
+	for(i=0;i!=10;i+=0.1){
+		printf("%.1f\n",i);
+	}
+	return 0; 
+	
+} 
 
