@@ -1,3 +1,4 @@
+
 /*三整数排序*/
 #include<stdio.h>
 int main(){
@@ -116,7 +117,7 @@ double
   最大有限值（DBL_MAX）：约 1.7976931348623157e+308（即约 
   1.8E308）。
   最小正值（接近 0 的正数，DBL_MIN）：约 2.2250738585072014e-308（即约 
-  2.2E−308）。
+  2.2E?308）。
   最小负值（最大的负数）：约 -1.7976931348623157e+308（最大有限值的相反数）。
 
 
@@ -340,7 +341,128 @@ int main(){
 }
 
 
+//倒三角，由于C语言没有Python的语言特性，所以只能借助循环来完成 
+#include<stdio.h>
+int main(){
+	int n;
+	scanf("%d",&n);
+	for(int j=0;j<n;j++){
+		for(int i=j-1;i>0;i--){
+			printf(" ");
+		}
+		for(int k=1;k<=2*(n-j)-1;k++){
+			printf("#");
+			
+			//TODO
+		}
+		printf("\n");		
+	}
+}
 
 
+
+//子序列的和 
+#include<stdio.h>
+int main(){
+    int n, m;
+    double s; 
+    while(scanf("%d%d", &n, &m) == 2 && (n != 0 || m != 0)){
+        s = 0;  
+        if(n > m){
+            int temp = n;
+            n = m;
+            m = temp;
+        }
+        for(int i = n; i <= m; i++){
+            s += 1.0 / (i * i); 
+        }
+        printf("%.5f\n", s);
+    }
+    return 0;
+}
+
+
+
+//分数化小数 
+#include<stdio.h>
+int main(){
+	int c;
+	double a,b;
+	while(scanf("%lf%lf%d",&a,&b,&c)==3&&(a!=0||b!=0||c!=0)){
+		printf("%.*f\n",c,a/b);
+	}
+	return 0;
+} 
+
+
+
+//排序  第一次练习排序题
+//在这里首次接触到了不重不漏的概念，有点挑战性！！ 
+#include<stdio.h>
+#include<time.h>
+int main(){
+	clock_t start =clock();
+	for(int num_1=102;num_1<=329;num_1++){
+		int num_2=num_1*2;
+		int num_3=num_1*3;
+		int a=num_1/100;
+		int b=num_1%100/10;
+		int c=num_1%10;
+		int d=num_2/100;
+		int e=num_2%100/10;
+		int f=num_2%10;
+		int g=num_3/100;
+		int h=num_3%100/10;
+		int i=num_3%10;
+		int digits[10]={0};
+		digits[a] = 1;
+		digits[b] = 1;
+		digits[c] = 1;
+	    digits[d] = 1;
+		digits[e] = 1;
+		digits[f] = 1;
+		digits[g] = 1;
+		digits[h] = 1;
+		digits[i] = 1;
+		int valid = 1;
+		    for (int i = 1; i <= 9; ++i) {
+		        if (digits[i] != 1) {
+		                valid = 0;
+		                break;
+		        }
+		    }
+		    if (valid) {
+		            printf("%d %d %d\n", num_1, num_2, num_3);
+		    }
+		}
+			clock_t end=clock();
+		
+			printf("TIME is used %.5f\n",(double)(end-start)/CLOCKS_PER_SEC);
+	return 0;
+} 
+//在C语言中，数组是检验不重不漏的有效手段，例如检验1--9数字是否全被使用完毕，只需要一个数组digits 
+// digits的作用：
+/*它利用数组的索引特性模拟了 “键值对” 的功能：
+索引 i（1~9）对应 “数字i”（相当于 “键”）。
+数组元素 digits[i] = 1 表示 “数字i出现过”（相当于 “值” 为 “已出现”）。
+通过遍历 digits[1]~digits[9]，检查是否全为1，即可判断 1-9 是否恰好各出现一次（无重复、无 0）*/ 
+//更聪明的做法
+#include<stdio.h>
+int check(int a,int digit[]){
+	for(int i =0;i<3;i++){
+		int b=a%10;
+		if(b==0||digit[b])return 0;
+		digit[b]=1;
+		a=a/10;	
+	}	
+	return 1;
+} 
+int main(){
+	for(int s=102;s<=333;s++){
+		int digit[10]={0};
+		if(check(s,digit)&&check(s*2,digit)&&check(s*3,digit))
+			printf("%d %d %d\n",s,s*2,s*3);
+	}
+	return 0;
 
 
