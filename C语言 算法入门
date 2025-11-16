@@ -479,3 +479,85 @@ int main(){
 	
 } 
 
+
+//数组的逆序输出
+#include<stdio.h>	
+	int arr[100000000]={};//如果数组特别大，其定义要放在main()函数外面，否则运行不了
+int main(){
+	int x,n=0;
+
+	while(scanf("%d",&x)==1&&x!=0){
+		arr[n++]=x;
+	}
+	for(int i=n-1;i>=0;i--){
+		printf("%d\t",arr[i]);
+	}
+	
+	
+	return 0;
+} 
+
+注意！！！！
+在C语言中，数组不能直接赋值
+要从数组a复制元素到数组b中，可以用memcpy(b.a.sizeof(int)*k)
+代表了从a中复制了k个元素到b
+使用之前需要include<string.h>
+
+
+
+
+/*有 n 盏灯，编号为 1~n，初始状态都是关闭的。第 1 个人把所有灯打开；
+第 2 个人按下所有编号为 2 的倍数的开关（这些灯会被关闭）；
+第 3 个人按下所有编号为 3 的倍数的开关（此时关着的灯会被打开，开
+着的灯会被关闭）；依此类推，第 i 个人按下所有编号为 i 的倍数的开关。
+问：有k个人，哪些灯最终是亮着的？*/ 
+//编写程序，输入 n,k   输出开着的灯的编号
+#include<stdio.h>
+int main(){
+	int k,n;	
+	scanf("%d %d",&n,&k);
+	int arr[n]={0}; //也可以使用数组清零技巧
+	//memset(arr,o,sizeof(a)) 
+	for(int i=1;i<=k;i++){
+		for(int j=1;j*i<=n;j++){
+		    arr[j*i-1]=!arr[j*i-1];
+		}	
+	}	
+	for(int i=0;i<n;i++){
+		if(arr[i])
+		printf("%d\t",i+1);
+	}
+	return 0;
+}
+补充：j*i也可以用整除思想代替
+
+
+
+
+//蛇形填数（n*n方阵）
+#include<stdio.h>
+#include<string.h>
+#define maxn 20 
+int arr[maxn][maxn];
+int main(){
+	int n,oringin,x,y;
+	scanf("%d",&n);
+	memset(arr,0,sizeof(arr));
+	oringin=arr[x=0][y=n-1]=1;
+	while(oringin<n*n){
+		while(x+1<n&&!arr[x+1][y])arr[++x][y]=++oringin;
+		while(y+1<n&&!arr[x][y+1])arr[x][++y]=++oringin;
+		while(x>=1&&!arr[x-1][y])arr[--x][y]=++oringin;
+		while(y>=1&&!arr[x][y-1])arr[x][--y]=++oringin;
+	}
+	for(x=0;x<n;x++){
+		for(y=0;y<n;y++)printf("%3d",arr[x][y]);
+		printf("\n");
+	}
+	return 0;
+} 
+
+
+
+
+
