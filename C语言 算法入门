@@ -587,7 +587,16 @@ int main(){
 	}
 	printf("The number of solution is %d",count);
 	return 0;
+
 }
+
+
+
+
+
+
+
+
 
 
 
