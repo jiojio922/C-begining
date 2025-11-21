@@ -592,6 +592,20 @@ int main(){
 
 
 
+//关于字符串的转换问题
+#include<stdio.h>
+int main() {
+	int c, q = 1;
+	while ((c = getchar()) != EOF) {
+		if (c == 'a') {
+			printf("%s", q ? "b" : "c");
+			q = !q;
+		}
+		else
+			printf("%c", c);
+	    }	
+	return 0;
+	}
 
 
 
