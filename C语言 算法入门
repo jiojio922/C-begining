@@ -609,6 +609,28 @@ int main() {
 
 
 
+//判断回文词 
+#include<string.h>
+#include<stdio.h>
+int main(){
+	int p=1;
+	char s[100];
+	scanf("%s",s);
+	int len=strlen(s);
+	for(int i=0;i<=(len+1)/2;i++){
+		if(s[i]!=s[len-i-1]){
+			p=0;
+			break;
+				 	
+		}
+	}
+	if(p)printf("%s是回文词",s);
+	else printf("%s不是回文词",s); 
+	return 0;
+}
+
+
+
 
 
 
