@@ -729,3 +729,75 @@ int main(){
 }
 
 
+
+//生成元问题
+//方法一：逐步遍历 
+#include<stdio.h>
+int main(){
+	int n,found=0;
+	scanf("%d",&n);
+	for(int i=1;i<n;i++){
+		int sum=0;
+		int temp=i; 
+		while(temp>0){
+			sum+=temp%10;
+			temp=temp/10;
+		}
+		if(sum+i==n){
+			printf("%d",i);
+			found=1;
+	    	break;	
+		}
+		
+		}
+		if(!found){
+			printf("0");
+	}
+	return 0;
+} 
+
+
+
+//方法二：预处理表格
+//通过计数工具可以看出方法二效率极高，优于方法一 
+#include<stdio.h>
+#include<time.h>
+#include<string.h>
+#define MAX 100010
+int arr[MAX];
+void pre(){
+	memset(arr, 0, sizeof(arr));
+	for(int i=1;i<MAX;i++){
+		int sum=0;
+		int temp=i; 
+		while(temp>0){
+			sum+=temp%10;
+			temp=temp/10;
+		}
+		int n=sum+i;
+		if(arr[n]==0){
+			arr[n]=i;
+		}
+
+		} 
+		
+	}
+int main(){
+	pre();
+	int num;
+	while(scanf("%d",&num)==1&&num!=0){
+		clock_t start =clock();
+		printf("%d\n",arr[num]);
+		clock_t end=clock();
+		printf("TIME is used %.6f\n",(double)(end-start)/CLOCKS_PER_SEC);
+	}
+	
+	
+}
+
+
+
+
+
+
+
