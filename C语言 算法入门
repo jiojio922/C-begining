@@ -689,4 +689,43 @@ int main(){
 
 
 
+//这是一个简单的猜数字游戏
+//输入数字序列的个数，之后输入答案
+//再输入若干个猜测序列，每输入一个序列，便会输出一个形如（A,B）的数对
+//A代表数值，位置全符合的数字个数，B代表只有数值符合的数字个数 
+#include<stdio.h>
+#define aaa 100
+int main(){
+	int num;
+	int answer[aaa];
+	scanf("%d",&num);
+	for(int i=0;i<num;i++){
+		scanf("%d",&answer[i]);
+	}
+
+	while(1){
+		int guess[aaa];
+		for(int i=0;i<num;i++){
+			scanf("%d",&guess[i]);
+		}
+		if(guess[0]==0)break;
+		int A=0,B=0;
+		for(int o=0;o<num;o++){
+			if(answer[o]==guess[o])
+			A++;
+		}
+		
+		for(int j=1;j<=9;j++){
+			int a=0,b=0;
+			for(int i=0;i<num;i++){
+				
+				if(answer[i]==j)a++;
+				if(guess[i]==j)b++;
+			}
+			B+=(a>b)?b:a;
+		}
+		printf("(%d,%d)\n",A,B-A);
+	}
+}
+
 
