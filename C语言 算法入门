@@ -797,7 +797,40 @@ int main(){
 
 
 
+//环状序列
+//这也是一个C语言核心语法的完结标志 
+#include<stdio.h>
+#include<string.h>
+int small(char*s,int p,int q){
+	int n=strlen(s);
+	for(int i=0;i<n;i++){
+		if(s[(p+i)%n]!=s[(q+i)%n]){
+			return s[(p+i)%n]<s[(q+i)%n];
+		}	
+	}
+	return 0;
+}
 
 
+int main(){
+	int t;
+	char arr[100];
+	scanf("%d",&t); 
+	for(int i=0;i<t;i++){
+		scanf("%s",arr);
+	int min=0;
+		int n=strlen(arr);
+		for(int j=0;j<n;j++){
+			if(small(arr,j,min)) min=j;
+			}
+		for(int k=0;k<n;k++){
+			putchar(arr[(k+min)%n]);
+			}
+			putchar('\n');
+	}
+	
+		
+	
+} 
 
 
